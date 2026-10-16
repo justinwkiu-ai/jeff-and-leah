@@ -101,22 +101,15 @@
     .hero {
       padding: 20px 20px 40px;
     }
+    /* 상단 '초대합니다 / You're Invited' 공통 세리프체(정자체, 동일 사이즈) 설정 */
     .hero-top-msg {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      font-style: italic;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
       letter-spacing: 2px;
       color: var(--accent-color);
       margin-bottom: 14px;
-    }
-    /* 영어 버전 상단 'You're Invited'만 산세리프체(Noto Sans KR)로 설정 */
-    .hero-top-msg.en {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 13px;
-      font-style: normal;
-      font-weight: 400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
     }
     .hero-img-wrap {
       width: calc(100% + 40px);
@@ -411,7 +404,7 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-top-msg ko serif">초대합니다</div>
+    <div class="hero-top-msg ko">초대합니다</div>
     <div class="hero-top-msg en">You're Invited</div>
     <div class="hero-img-wrap">
       <img 
