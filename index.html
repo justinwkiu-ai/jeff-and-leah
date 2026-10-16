@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeff & Leah's Wedding</title>
+  <title>Jeff & Leah's Wedding Invitation</title>
+
+  <!-- Open Graph / Social Sharing Meta Tags (링크 공유 미리보기 설정 완료) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jeff & Leah's Wedding Invitation">
+  <meta property="og:description" content="2027.02.19 제프 앤더슨 & 장혜원의 결혼식에 초대합니다.">
+  <meta property="og:image" content="https://justinwkiu-ai.github.io/jeff-and-leah/KakaoTalk_Photo_2026-10-16-10-04-08.jpeg">
+  <meta property="og:url" content="">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -398,7 +406,7 @@
     <div class="hero-img-wrap">
       <img 
         id="hero-photo" 
-        src="KakaoTalk_Photo_2026-10-16-10-04-08.jpg" 
+        src="KakaoTalk_Photo_2026-10-16-10-04-08.jpeg" 
         alt="Jeff & Leah Wedding Snapshot"
         onerror="resolvePhotoError(this)"
       >
@@ -460,7 +468,7 @@
         <div class="cal-day-name">Fr</div>
         <div class="cal-day-name">Sa</div>
 
-        <!-- Feb 2027 Calendar Matrix (Feb 1 starts on Monday) -->
+        <!-- Feb 2027 Calendar Matrix -->
         <div class="cal-day muted">31</div>
         <div class="cal-day">1</div>
         <div class="cal-day">2</div>
@@ -624,7 +632,7 @@
     <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
   </section>
 
-  <!-- Share Section (모바일/웹 공용 링크 공유) -->
+  <!-- Share Section -->
   <section class="share-section">
     <div class="section-title serif">Share Invitation</div>
     <button class="btn-share" onclick="shareWeddingCard()">
@@ -639,6 +647,9 @@
 <div id="toast">Copied to clipboard</div>
 
 <script>
+  // Automatically set og:url to current page
+  document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
+
   // Language Switch Function
   function setLang(lang) {
     if (lang === 'en') {
@@ -701,7 +712,7 @@
   function shareWeddingCard() {
     const shareData = {
       title: "Jeff & Leah's Wedding Invitation",
-      text: "제프 앤더슨 & 장혜원의 결혼식에 초대합니다.",
+      text: "2027.02.19 제프 앤더슨 & 장혜원의 결혼식에 초대합니다.",
       url: window.location.href
     };
 
