@@ -102,17 +102,12 @@
       padding: 20px 20px 40px;
     }
     .hero-top-msg {
-      font-size: 14px;
-      letter-spacing: 3px;
-      color: var(--accent-color);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .hero-top-msg.en {
       font-family: 'Cormorant Garamond', serif;
       font-size: 18px;
       font-style: italic;
       letter-spacing: 2px;
+      color: var(--accent-color);
+      margin-bottom: 14px;
     }
     .hero-img-wrap {
       width: calc(100% + 40px);
@@ -407,7 +402,7 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-top-msg ko">초대합니다</div>
+    <div class="hero-top-msg ko serif">Invitation</div>
     <div class="hero-top-msg en serif">You're Invited</div>
     <div class="hero-img-wrap">
       <img 
@@ -551,225 +546,4 @@
     <p style="color:var(--text-sub); font-size:13px; margin-bottom: 15px;">19/Feb/2027 (FRI)</p>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-time">12:30 PM</div>
-        <div class="timeline-desc ko">하객 맞이 및 등록</div>
-        <div class="timeline-desc en">Guest Arrival & Welcome</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">01:00 PM</div>
-        <div class="timeline-desc ko">결혼 예배 / 본식</div>
-        <div class="timeline-desc en">Wedding Ceremony</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">02:30 PM</div>
-        <div class="timeline-desc ko">리셉션 & 점심 식사</div>
-        <div class="timeline-desc en">Reception & Lunch</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">06:00 PM ~</div>
-        <div class="timeline-desc ko">축하 파티 (~11:00 PM)</div>
-        <div class="timeline-desc en">Evening Celebration (~11:00 PM)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Location Section -->
-  <section>
-    <div class="section-title serif">Location</div>
-    <h3 style="font-size:18px; margin-bottom:6px;">Cove Civic Centre</h3>
-    <p style="font-size:13px; color:var(--text-sub);">1 Ragamuffin Dr, Hallett Cove SA 5158 Australia</p>
-
-    <div class="map-box">
-      <!-- Google Maps Embed -->
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.398910406649!2d138.50652877665796!3d-35.07174667279011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0ce4b706f97ef%3A0xe54e2f896bfa8a76!2sCove%20Civic%20Centre!5e0!3m2!1sen!2sau!4v1710000000000!5m2!1sen!2sau" 
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" rel="noopener noreferrer" class="btn-action ko">구글 맵으로 길찾기</a>
-    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" rel="noopener noreferrer" class="btn-action en">Open in Google Maps</a>
-  </section>
-
-  <!-- Accounts & Gifts -->
-  <section>
-    <div class="section-title serif">Heartfelt Wishes</div>
-    <p class="ko" style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
-      멀리서 마음으로 축하를 전하고자 하시는 분들을 위해 계좌 정보를 기재합니다.
-    </p>
-    <p class="en" style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
-      Your presence is the greatest gift. If you wish to bless us, details are provided below.
-    </p>
-
-    <!-- 신부 계좌 (한국) -->
-    <div class="acc-item">
-      <div class="acc-header">
-        <span class="ko">신부측 한국 계좌 (장혜원)</span>
-        <span class="en">Bride's Account (Korea)</span>
-      </div>
-      <div class="acc-details">
-        <span>카카오뱅크 3333-00-0000000</span>
-        <button class="btn-copy" onclick="copyText('3333-00-0000000')">복사</button>
-      </div>
-    </div>
-
-    <!-- 신랑 계좌 (호주) -->
-    <div class="acc-item">
-      <div class="acc-header">
-        <span class="ko">신랑측 호주 계좌 (제프 앤더슨)</span>
-        <span class="en">Groom's Account (Australia)</span>
-      </div>
-      <div class="acc-details">
-        <span>BSB: 000-000 / ACC: 12345678</span>
-        <button class="btn-copy" onclick="copyText('BSB: 000-000 Account: 12345678')">Copy</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- RSVP Section -->
-  <section>
-    <div class="section-title serif">R.S.V.P</div>
-    <p class="ko" style="font-size:13.5px; color:var(--text-sub); margin-bottom:16px;">
-      원활한 예식 및 식사 준비를 위해<br>참석 여부를 회신해 주시면 감사하겠습니다.
-    </p>
-    <p class="en" style="font-size:13.5px; color:var(--text-sub); margin-bottom:16px;">
-      Please let us know if you can make it<br>by completing the RSVP form.
-    </p>
-    <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action ko" style="background:#555;">참석 여부 전달하기 (RSVP)</a>
-    <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
-  </section>
-
-  <!-- Share Section -->
-  <section class="share-section">
-    <div class="section-title serif">Share Invitation</div>
-    <button class="btn-share" onclick="shareWeddingCard()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
-      <span class="ko">청첩장 링크 공유하기</span>
-      <span class="en">Share Wedding Link</span>
-    </button>
-  </section>
-</div>
-
-<!-- Toast Message Element -->
-<div id="toast">Copied to clipboard</div>
-
-<script>
-  // Automatically set og:url to current page
-  document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
-
-  // Language Switch Function
-  function setLang(lang) {
-    if (lang === 'en') {
-      document.body.className = 'lang-en';
-      document.getElementById('btn-en').classList.add('active');
-      document.getElementById('btn-ko').classList.remove('active');
-    } else {
-      document.body.className = 'lang-ko';
-      document.getElementById('btn-ko').classList.add('active');
-      document.getElementById('btn-en').classList.remove('active');
-    }
-  }
-
-  // D-Day Countdown Timer Logic
-  const weddingDate = new Date('2027-02-19T12:30:00');
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = weddingDate - now;
-    const isEn = document.body.classList.contains('lang-en');
-    const sentenceEl = document.getElementById('dday-sentence');
-
-    if (diff <= 0) {
-      const pastDiff = Math.abs(diff);
-      const passedDays = Math.floor(pastDiff / (1000 * 60 * 60 * 24));
-      document.getElementById('d-days').innerText = '00';
-      document.getElementById('d-hours').innerText = '00';
-      document.getElementById('d-mins').innerText = '00';
-      document.getElementById('d-secs').innerText = '00';
-
-      if (isEn) {
-        sentenceEl.innerText = `${passedDays} days have passed since Jeff & Leah's wedding.`;
-      } else {
-        sentenceEl.innerText = `Jeff ♥ Leah의 결혼식으로부터 ${passedDays}일이 지났습니다.`;
-      }
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / 1000 / 60) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    document.getElementById('d-days').innerText = String(days).padStart(2, '0');
-    document.getElementById('d-hours').innerText = String(hours).padStart(2, '0');
-    document.getElementById('d-mins').innerText = String(mins).padStart(2, '0');
-    document.getElementById('d-secs').innerText = String(secs).padStart(2, '0');
-
-    if (isEn) {
-      sentenceEl.innerText = `${days} days until Jeff & Leah's wedding.`;
-    } else {
-      sentenceEl.innerText = `Jeff ♥ Leah의 결혼식이 ${days}일 남았습니다.`;
-    }
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  // Native Share / Clipboard Fallback Function
-  function shareWeddingCard() {
-    const shareData = {
-      title: "Jeff & Leah's Wedding Invitation",
-      text: "2027.02.19 제프 앤더슨 & 장혜원의 결혼식에 초대합니다.",
-      url: window.location.href
-    };
-
-    if (navigator.share) {
-      navigator.share(shareData).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        const toast = document.getElementById('toast');
-        const isEn = document.body.classList.contains('lang-en');
-        toast.innerText = isEn ? 'Link copied to clipboard!' : '청첩장 링크가 복사되었습니다.';
-        toast.className = 'show';
-        setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 2000);
-      });
-    }
-  }
-
-  // Photo Fallback Resolver
-  const fallbackCandidates = [
-    'KakaoTalk_Photo_2026-10-16-10-04-08.jpeg',
-    'KakaoTalk_Photo_2026-10-16-10-04-08.JPG',
-    'KakaoTalk_Photo_2026-10-16-10-04-08.png'
-  ];
-  let fallbackIndex = 0;
-
-  function resolvePhotoError(imgElement) {
-    if (fallbackIndex < fallbackCandidates.length) {
-      imgElement.src = fallbackCandidates[fallbackIndex++];
-    } else {
-      imgElement.onerror = null;
-      fetch('https://api.github.com/repos/justinwkiu-ai/jeff-and-leah/contents/')
-        .then(res => res.json())
-        .then(files => {
-          if (Array.isArray(files)) {
-            const imgFile = files.find(f => /\.(jpe?g|png|webp|gif)$/i.test(f.name));
-            if (imgFile) imgElement.src = imgFile.name;
-          }
-        })
-        .catch(() => {});
-    }
-  }
-
-  // Account Copy Function
-  function copyText(val) {
-    navigator.clipboard.writeText(val).then(() => {
-      const toast = document.getElementById('toast');
-      const isEn = document.body.classList.contains('lang-en');
-      toast.innerText = isEn ? 'Copied to clipboard' : '계좌번호가 복사되었습니다.';
-      toast.className = 'show';
-      setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 2000);
-    });
-  }
-</script>
-</body>
-</html>
+        <div class="timeline-time">12:30 PM
