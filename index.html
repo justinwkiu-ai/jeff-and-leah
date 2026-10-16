@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeff & Leah's Wedding</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #fcfbfa;
+      --card-bg: #ffffff;
+      --text-main: #333333;
+      --text-sub: #777777;
+      --accent-color: #8c7b6d;
+      --line-color: #ece8e3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #eae7e2;
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-color);
+      min-height: 100vh;
+      box-shadow: 0 0 25px rgba(0,0,0,0.06);
+      position: relative;
+      padding-bottom: 70px;
+    }
+
+    /* Language Switcher */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(252, 251, 250, 0.92);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: flex-end;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--line-color);
+    }
+    .lang-btn {
+      border: 1px solid var(--accent-color);
+      background: transparent;
+      color: var(--accent-color);
+      padding: 3px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 14px;
+      transition: all 0.2s ease;
+      margin-left: 6px;
+    }
+    .lang-btn.active {
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    /* Content Visibility by Language */
+    body.lang-ko .en { display: none !important; }
+    body.lang-en .ko { display: none !important; }
+
+    /* Sections */
+    section {
+      padding: 40px 24px;
+      text-align: center;
+      border-bottom: 1px solid var(--line-color);
+    }
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 1px;
+    }
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-color);
+      margin-bottom: 16px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 30px 20px;
+    }
+    .hero-img-wrap {
+      width: 100%;
+      height: 480px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background: #dfdad3;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-names {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    .hero-date {
+      color: var(--text-sub);
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* Greeting Section */
+    .greeting-text {
+      color: var(--text-sub);
+      font-size: 14.5px;
+      line-height: 2;
+    }
+
+    /* Profile Section */
+    .profile-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line-color);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .profile-role {
+      font-size: 13px;
+      color: var(--accent-color);
+    }
+    .profile-name {
+      font-weight: 500;
+    }
+    .profile-birth {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    /* Timeline Section */
+    .timeline {
+      text-align: left;
+      margin: 20px auto 0;
+      max-width: 300px;
+    }
+    .timeline-item {
+      display: flex;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .timeline-time {
+      width: 80px;
+      font-weight: 500;
+      color: var(--accent-color);
+      font-size: 13px;
+    }
+    .timeline-desc {
+      flex: 1;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    /* Map & Location */
+    .map-box {
+      width: 100%;
+      height: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 16px 0;
+      border: 1px solid var(--line-color);
+    }
+    .btn-action {
+      display: inline-block;
+      width: 100%;
+      padding: 13px;
+      border-radius: 6px;
+      background: var(--accent-color);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Accounts */
+    .acc-item {
+      background: var(--card-bg);
+      border: 1px solid var(--line-color);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .acc-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .acc-details {
+      font-size: 13px;
+      color: var(--text-sub);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-copy {
+      background: #f1ede8;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    /* Toast Alert */
+    #toast {
+      visibility: hidden;
+      min-width: 200px;
+      background-color: rgba(0,0,0,0.8);
+      color: #fff;
+      text-align: center;
+      border-radius: 20px;
+      padding: 10px 16px;
+      position: fixed;
+      z-index: 999;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+    }
+    #toast.show { visibility: visible; }
+  </style>
+</head>
+<body class="lang-ko">
+
+<div class="wrapper">
+  <!-- Language Toggle Sticky Bar -->
+  <div class="lang-bar">
+    <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">한국어</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-img-wrap">
+      <!-- 사진 교체: 같은 폴더의 이미지 파일명(예: main.jpg) 또는 이미지 URL -->
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding Snapshot">
+    </div>
+    <div class="section-title serif">Wedding Invitation</div>
+    <div class="hero-names serif">Jeff Anderson & Leah Hyewon Jang</div>
+    <div class="hero-date">2027. 02. 19. FRI 12:30 PM</div>
+  </section>
+
+  <!-- Greeting Section -->
+  <section>
+    <div class="section-title serif">Invitation</div>
+    <div class="greeting-text ko">
+      서로 다른 길을 걸어오던 두 사람이<br>
+      이제 사랑과 신뢰로 하나의 길을 함께 걸어가려 합니다.<br><br>
+      애들레이드의 눈부신 여름날,<br>
+      저희의 새로운 시작을 함께 축복해 주시면<br>
+      더없는 기쁨으로 간직하겠습니다.
+    </div>
+    <div class="greeting-text en">
+      Two different journeys cross to become one.<br>
+      With love, trust, and shared dreams,<br>
+      we invite you to celebrate our new beginning.<br><br>
+      Your presence and warm blessings<br>
+      will make our special day complete.
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section>
+    <div class="section-title serif">The Couple</div>
+    <div class="profile-card">
+      <div>
+        <div class="profile-role ko">신랑</div>
+        <div class="profile-role en">Groom</div>
+        <div class="profile-name">Jeff Anderson</div>
+      </div>
+      <div class="profile-birth">1996. 02. 12</div>
+    </div>
+    <div class="profile-card">
+      <div>
+        <div class="profile-role ko">신부</div>
+        <div class="profile-role en">Bride</div>
+        <div class="profile-name ko">장혜원</div>
+        <div class="profile-name en">Leah Hyewon Jang</div>
+      </div>
+      <div class="profile-birth">1993. 06. 29</div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section>
+    <div class="section-title serif">Order of Events</div>
+    <p style="color:var(--text-sub); font-size:13px; margin-bottom: 15px;">2027. 02. 19 (FRI)</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">12:30 PM</div>
+        <div class="timeline-desc ko">하객 맞이 및 등록</div>
+        <div class="timeline-desc en">Guest Arrival & Welcome</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">01:00 PM</div>
+        <div class="timeline-desc ko">결혼 예배 / 본식</div>
+        <div class="timeline-desc en">Wedding Ceremony</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">02:30 PM</div>
+        <div class="timeline-desc ko">리셉션 & 점심 식사</div>
+        <div class="timeline-desc en">Reception & Lunch</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">06:00 PM ~</div>
+        <div class="timeline-desc ko">축하 파티 (~11:00 PM)</div>
+        <div class="timeline-desc en">Evening Celebration (~11:00 PM)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section>
+    <div class="section-title serif">Location</div>
+    <h3 style="font-size:18px; margin-bottom:6px;">Cove Civic Centre</h3>
+    <p style="font-size:13px; color:var(--text-sub);">1 Ragamuffin Dr, Hallett Cove SA 5158 Australia</p>
+
+    <div class="map-box">
+      <!-- Google Maps Embed -->
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.398910406649!2d138.50652877665796!3d-35.07174667279011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0ce4b706f97ef%3A0xe54e2f896bfa8a76!2sCove%20Civic%20Centre!5e0!3m2!1sen!2sau!4v1710000000000!5m2!1sen!2sau" 
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" class="btn-action ko">구글 맵으로 길찾기</a>
+    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" class="btn-action en">Open in Google Maps</a>
+  </section>
+
+  <!-- Accounts & Gifts -->
+  <section>
+    <div class="section-title serif">Heartfelt Wishes</div>
+    <p class="ko" style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
+      멀리서 마음으로 축하를 전하고자 하시는 분들을 위해 계좌 정보를 기재합니다.
+    </p>
+    <p class="en" style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
+      Your presence is the greatest gift. If you wish to bless us, details are provided below.
+    </p>
+
+    <!-- 신부 계좌 (한국) -->
+    <div class="acc-item">
+      <div class="acc-header">
+        <span class="ko">신부측 한국 계좌 (장혜원)</span>
+        <span class="en">Bride's Account (Korea)</span>
+      </div>
+      <div class="acc-details">
+        <span>카카오뱅크 3333-00-0000000</span>
+        <button class="btn-copy" onclick="copyText('3333-00-0000000')">복사</button>
+      </div>
+    </div>
+
+    <!-- 신랑 계좌 (호주) -->
+    <div class="acc-item">
+      <div class="acc-header">
+        <span class="ko">신랑측 호주 계좌 (Jeff Anderson)</span>
+        <span class="en">Groom's Account (Australia)</span>
+      </div>
+      <div class="acc-details">
+        <span>BSB: 000-000 / ACC: 12345678</span>
+        <button class="btn-copy" onclick="copyText('BSB: 000-000 Account: 12345678')">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP Section -->
+  <section style="border-bottom:none;">
+    <div class="section-title serif">R.S.V.P</div>
+    <p class="ko" style="font-size:13.5px; color:var(--text-sub); margin-bottom:16px;">
+      원활한 예식 및 식사 준비를 위해<br>참석 여부를 회신해 주시면 감사하겠습니다.
+    </p>
+    <p class="en" style="font-size:13.5px; color:var(--text-sub); margin-bottom:16px;">
+      Please let us know if you can make it<br>by completing the RSVP form.
+    </p>
+    <!-- Google Forms 연결 링크 교체 -->
+    <a href="https://forms.google.com" target="_blank" class="btn-action ko" style="background:#555;">참석 여부 전달하기 (RSVP)</a>
+    <a href="https://forms.google.com" target="_blank" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
+  </section>
+</div>
+
+<!-- Toast Message Element -->
+<div id="toast">복사되었습니다.</div>
+
+<script>
+  // Language Switch Function
+  function setLang(lang) {
+    if (lang === 'en') {
+      document.body.className = 'lang-en';
+      document.getElementById('btn-en').classList.add('active');
+      document.getElementById('btn-ko').classList.remove('active');
+    } else {
+      document.body.className = 'lang-ko';
+      document.getElementById('btn-ko').classList.add('active');
+      document.getElementById('btn-en').classList.remove('active');
+    }
+  }
+
+  // Account Copy Function
+  function copyText(val) {
+    navigator.clipboard.writeText(val).then(() => {
+      const toast = document.getElementById('toast');
+      const isEn = document.body.classList.contains('lang-en');
+      toast.innerText = isEn ? 'Copied to clipboard' : '계좌번호가 복사되었습니다.';
+      toast.className = 'show';
+      setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 2000);
+    });
+  }
+</script>
+</body>
+</html>
