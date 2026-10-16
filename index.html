@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,17 +89,25 @@
       margin-bottom: 16px;
     }
 
-    /* Hero Section */
+    /* Hero Section with Bottom Gradient Fade */
     .hero {
-      padding: 30px 20px;
+      padding: 20px 20px 40px;
+    }
+    .hero-top-msg {
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
     .hero-img-wrap {
-      width: 100%;
-      height: 520px;
-      border-radius: 6px;
+      width: calc(100% + 40px);
+      margin-left: -20px;
+      height: 540px;
       overflow: hidden;
-      margin-bottom: 24px;
-      background: #dfdad3;
+      margin-bottom: 12px;
+      background: var(--bg-color);
+      position: relative;
     }
     .hero-img-wrap img {
       width: 100%;
@@ -108,21 +116,30 @@
       object-position: center 20%;
       display: block;
     }
+    .hero-img-wrap::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 45%;
+      background: linear-gradient(
+        to bottom,
+        rgba(252, 251, 250, 0) 0%,
+        rgba(252, 251, 250, 0.35) 45%,
+        rgba(252, 251, 250, 0.85) 80%,
+        #fcfbfa 100%
+      );
+      pointer-events: none;
+    }
     .hero-names {
+      font-size: clamp(16px, 4.5vw, 20px);
+      font-weight: 600;
+      letter-spacing: 0.5px;
       margin-bottom: 8px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-    .hero-names.ko {
-      font-size: 21px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    .hero-names.en {
-      font-size: clamp(16px, 4.5vw, 20px);
-      font-weight: 600;
-      letter-spacing: 0.5px;
     }
     .hero-date {
       color: var(--text-sub);
@@ -156,6 +173,91 @@
     .profile-name {
       font-weight: 500;
       font-size: 15.5px;
+    }
+    .en-sub {
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 400;
+      margin-left: 3px;
+    }
+
+    /* Calendar & D-Day Section */
+    .calendar-container {
+      background: var(--card-bg);
+      border: 1px solid var(--line-color);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto 0;
+      max-width: 340px;
+    }
+    .cal-header {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent-color);
+      margin-bottom: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 1px;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .cal-day-name {
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .cal-day {
+      padding: 6px 0;
+      color: var(--text-main);
+    }
+    .cal-day.target {
+      background: var(--accent-color);
+      color: #fff;
+      border-radius: 50%;
+      font-weight: 600;
+    }
+    .cal-day.muted {
+      color: #ccc;
+    }
+
+    /* D-Day Timer UI */
+    .dday-box {
+      border-top: 1px solid var(--line-color);
+      padding-top: 16px;
+    }
+    .dday-timers {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .timer-item {
+      background: #f7f5f0;
+      padding: 8px 12px;
+      border-radius: 6px;
+      min-width: 52px;
+      text-align: center;
+    }
+    .timer-num {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .timer-lbl {
+      font-size: 10px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+    }
+    .dday-text {
+      font-size: 13.5px;
+      color: var(--accent-color);
+      font-weight: 500;
     }
 
     /* Timeline Section */
@@ -237,6 +339,30 @@
       color: var(--text-main);
     }
 
+    /* Share Section */
+    .share-section {
+      background: #f7f5f0;
+      padding: 30px 24px;
+      text-align: center;
+      border-bottom: none;
+    }
+    .btn-share {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px;
+      border-radius: 6px;
+      background: #333333;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
     /* Toast Alert */
     #toast {
       visibility: hidden;
@@ -256,17 +382,19 @@
     #toast.show { visibility: visible; }
   </style>
 </head>
-<body class="lang-ko">
+<body class="lang-en">
 
 <div class="wrapper">
-  <!-- Language Toggle Sticky Bar -->
+  <!-- Language Toggle Sticky Bar (English Default) -->
   <div class="lang-bar">
-    <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">한국어</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+    <button class="lang-btn" id="btn-ko" onclick="setLang('ko')">한국어</button>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-top-msg ko">초대합니다</div>
+    <div class="hero-top-msg en">You're Invited</div>
     <div class="hero-img-wrap">
       <img 
         id="hero-photo" 
@@ -276,8 +404,7 @@
       >
     </div>
     <div class="section-title serif">Wedding Invitation</div>
-    <div class="hero-names ko">제프 앤더슨 &amp; 장혜원</div>
-    <div class="hero-names serif en">Jeff Anderson &amp; Leah Hyewon Jang</div>
+    <div class="hero-names serif">Jeff Anderson &amp; Leah Hyewon Jang</div>
     <div class="hero-date">19/Feb/2027 FRI 12:30 PM</div>
   </section>
 
@@ -306,14 +433,101 @@
     <div class="profile-card">
       <div class="profile-role ko">신랑</div>
       <div class="profile-role en">Groom</div>
-      <div class="profile-name ko">제프 앤더슨</div>
+      <div class="profile-name ko">제프 앤더슨 <span class="en-sub">(Jeff Anderson)</span></div>
       <div class="profile-name en">Jeff Anderson</div>
     </div>
     <div class="profile-card">
       <div class="profile-role ko">신부</div>
       <div class="profile-role en">Bride</div>
-      <div class="profile-name ko">장혜원</div>
+      <div class="profile-name ko">장혜원 <span class="en-sub">(Leah Hyewon Jang)</span></div>
       <div class="profile-name en">Leah Hyewon Jang</div>
+    </div>
+  </section>
+
+  <!-- Calendar & D-Day Section -->
+  <section>
+    <div class="section-title serif">Wedding Date</div>
+    <p style="color:var(--text-sub); font-size:13.5px; margin-bottom: 4px;">2027. 02. 19 FRI PM 12:30</p>
+    
+    <div class="calendar-container">
+      <div class="cal-header">February 2027</div>
+      <div class="cal-grid">
+        <div class="cal-day-name" style="color:#d9534f;">Su</div>
+        <div class="cal-day-name">Mo</div>
+        <div class="cal-day-name">Tu</div>
+        <div class="cal-day-name">We</div>
+        <div class="cal-day-name">Th</div>
+        <div class="cal-day-name">Fr</div>
+        <div class="cal-day-name">Sa</div>
+
+        <!-- Feb 2027 Calendar Matrix (Feb 1 starts on Monday) -->
+        <div class="cal-day muted">31</div>
+        <div class="cal-day">1</div>
+        <div class="cal-day">2</div>
+        <div class="cal-day">3</div>
+        <div class="cal-day">4</div>
+        <div class="cal-day">5</div>
+        <div class="cal-day">6</div>
+
+        <div class="cal-day">7</div>
+        <div class="cal-day">8</div>
+        <div class="cal-day">9</div>
+        <div class="cal-day">10</div>
+        <div class="cal-day">11</div>
+        <div class="cal-day">12</div>
+        <div class="cal-day">13</div>
+
+        <div class="cal-day">14</div>
+        <div class="cal-day">15</div>
+        <div class="cal-day">16</div>
+        <div class="cal-day">17</div>
+        <div class="cal-day">18</div>
+        <div class="cal-day target">19</div>
+        <div class="cal-day">20</div>
+
+        <div class="cal-day">21</div>
+        <div class="cal-day">22</div>
+        <div class="cal-day">23</div>
+        <div class="cal-day">24</div>
+        <div class="cal-day">25</div>
+        <div class="cal-day">26</div>
+        <div class="cal-day">27</div>
+
+        <div class="cal-day">28</div>
+        <div class="cal-day muted">1</div>
+        <div class="cal-day muted">2</div>
+        <div class="cal-day muted">3</div>
+        <div class="cal-day muted">4</div>
+        <div class="cal-day muted">5</div>
+        <div class="cal-day muted">6</div>
+      </div>
+
+      <!-- D-Day Countdown -->
+      <div class="dday-box">
+        <div class="dday-timers">
+          <div class="timer-item">
+            <div class="timer-num" id="d-days">00</div>
+            <div class="timer-lbl ko">일</div>
+            <div class="timer-lbl en">Days</div>
+          </div>
+          <div class="timer-item">
+            <div class="timer-num" id="d-hours">00</div>
+            <div class="timer-lbl ko">시</div>
+            <div class="timer-lbl en">Hours</div>
+          </div>
+          <div class="timer-item">
+            <div class="timer-num" id="d-mins">00</div>
+            <div class="timer-lbl ko">분</div>
+            <div class="timer-lbl en">Mins</div>
+          </div>
+          <div class="timer-item">
+            <div class="timer-num" id="d-secs">00</div>
+            <div class="timer-lbl ko">초</div>
+            <div class="timer-lbl en">Secs</div>
+          </div>
+        </div>
+        <div class="dday-text" id="dday-sentence">Jeff ♥ Leah의 결혼식이 0일 남았습니다.</div>
+      </div>
     </div>
   </section>
 
@@ -358,8 +572,8 @@
         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" class="btn-action ko">구글 맵으로 길찾기</a>
-    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" class="btn-action en">Open in Google Maps</a>
+    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" rel="noopener noreferrer" class="btn-action ko">구글 맵으로 길찾기</a>
+    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" rel="noopener noreferrer" class="btn-action en">Open in Google Maps</a>
   </section>
 
   <!-- Accounts & Gifts -->
@@ -398,7 +612,7 @@
   </section>
 
   <!-- RSVP Section -->
-  <section style="border-bottom:none;">
+  <section>
     <div class="section-title serif">R.S.V.P</div>
     <p class="ko" style="font-size:13.5px; color:var(--text-sub); margin-bottom:16px;">
       원활한 예식 및 식사 준비를 위해<br>참석 여부를 회신해 주시면 감사하겠습니다.
@@ -406,14 +620,23 @@
     <p class="en" style="font-size:13.5px; color:var(--text-sub); margin-bottom:16px;">
       Please let us know if you can make it<br>by completing the RSVP form.
     </p>
-    <!-- Google Forms 연결 링크 교체 -->
-    <a href="https://forms.google.com" target="_blank" class="btn-action ko" style="background:#555;">참석 여부 전달하기 (RSVP)</a>
-    <a href="https://forms.google.com" target="_blank" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
+    <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action ko" style="background:#555;">참석 여부 전달하기 (RSVP)</a>
+    <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
+  </section>
+
+  <!-- Share Section (모바일/웹 공용 링크 공유) -->
+  <section class="share-section">
+    <div class="section-title serif">Share Invitation</div>
+    <button class="btn-share" onclick="shareWeddingCard()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+      <span class="ko">청첩장 링크 공유하기</span>
+      <span class="en">Share Wedding Link</span>
+    </button>
   </section>
 </div>
 
 <!-- Toast Message Element -->
-<div id="toast">복사되었습니다.</div>
+<div id="toast">Copied to clipboard</div>
 
 <script>
   // Language Switch Function
@@ -429,7 +652,73 @@
     }
   }
 
-  // Photo Fallback Resolver (확장자 차이 또는 업로드된 이미지 자동 감지)
+  // D-Day Countdown Timer Logic
+  const weddingDate = new Date('2027-02-19T12:30:00');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = weddingDate - now;
+    const isEn = document.body.classList.contains('lang-en');
+    const sentenceEl = document.getElementById('dday-sentence');
+
+    if (diff <= 0) {
+      const pastDiff = Math.abs(diff);
+      const passedDays = Math.floor(pastDiff / (1000 * 60 * 60 * 24));
+      document.getElementById('d-days').innerText = '00';
+      document.getElementById('d-hours').innerText = '00';
+      document.getElementById('d-mins').innerText = '00';
+      document.getElementById('d-secs').innerText = '00';
+
+      if (isEn) {
+        sentenceEl.innerText = `${passedDays} days have passed since Jeff & Leah's wedding.`;
+      } else {
+        sentenceEl.innerText = `Jeff ♥ Leah의 결혼식으로부터 ${passedDays}일이 지났습니다.`;
+      }
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / 1000 / 60) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('d-days').innerText = String(days).padStart(2, '0');
+    document.getElementById('d-hours').innerText = String(hours).padStart(2, '0');
+    document.getElementById('d-mins').innerText = String(mins).padStart(2, '0');
+    document.getElementById('d-secs').innerText = String(secs).padStart(2, '0');
+
+    if (isEn) {
+      sentenceEl.innerText = `${days} days until Jeff & Leah's wedding.`;
+    } else {
+      sentenceEl.innerText = `Jeff ♥ Leah의 결혼식이 ${days}일 남았습니다.`;
+    }
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Native Share / Clipboard Fallback Function
+  function shareWeddingCard() {
+    const shareData = {
+      title: "Jeff & Leah's Wedding Invitation",
+      text: "제프 앤더슨 & 장혜원의 결혼식에 초대합니다.",
+      url: window.location.href
+    };
+
+    if (navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const toast = document.getElementById('toast');
+        const isEn = document.body.classList.contains('lang-en');
+        toast.innerText = isEn ? 'Link copied to clipboard!' : '청첩장 링크가 복사되었습니다.';
+        toast.className = 'show';
+        setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 2000);
+      });
+    }
+  }
+
+  // Photo Fallback Resolver
   const fallbackCandidates = [
     'KakaoTalk_Photo_2026-10-16-10-04-08.jpeg',
     'KakaoTalk_Photo_2026-10-16-10-04-08.JPG',
