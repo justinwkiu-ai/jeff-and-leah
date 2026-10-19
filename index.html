@@ -27,24 +27,30 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    /* 모바일 가로 스크롤 방지 및 완벽한 중앙 정렬을 위한 수정 */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
     body {
       background-color: #eae7e2;
       color: var(--text-main);
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 15px;
       line-height: 1.7;
-      display: flex;
-      justify-content: center;
     }
 
     .wrapper {
       width: 100%;
       max-width: 440px;
+      margin: 0 auto; /* 모바일/PC 완벽 중앙 정렬 */
       background: var(--bg-color);
       min-height: 100vh;
       box-shadow: 0 0 25px rgba(0,0,0,0.06);
       position: relative;
       padding-bottom: 70px;
+      overflow-x: hidden; /* 내부 요소가 바깥으로 튀어나가는 현상 방지 */
     }
 
     /* Language Switcher */
@@ -316,38 +322,6 @@
       margin-top: 10px;
       border: none;
       cursor: pointer;
-    }
-
-    /* Accounts (CSS kept for compatibility if needed later) */
-    .acc-item {
-      background: var(--card-bg);
-      border: 1px solid var(--line-color);
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 12px;
-      text-align: left;
-    }
-    .acc-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    .acc-details {
-      font-size: 13px;
-      color: var(--text-sub);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .btn-copy {
-      background: #f1ede8;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      cursor: pointer;
-      color: var(--text-main);
     }
 
     /* Share Section */
@@ -739,7 +713,6 @@
 <FollowUp></FollowUp>
 
 <ElicitationsGroup>
-  <Elicitation label="다른 폰트 추천" query="다른 글씨체(폰트)로도 변경해 볼 수 있을까?"/>
-  <Elicitation label="카운트다운 색상 변경" query="카운트다운 시계 색상을 다른 색으로 바꿀 수 있을까?"/>
-  <Elicitation label="기본 언어 변경" query="처음 들어갔을 때 한국어가 먼저 나오도록 다시 바꿀 수 있어?"/>
+  <Elicitation label="테마 색상 변경" query="페이지 전체적인 배경색이나 포인트 컬러를 바꿀 수 있을까?"/>
+  <Elicitation label="안내 문구 수정" query="초대의 글이나 일정에 있는 문구를 조금 더 수정하고 싶어." 기입/>
 </ElicitationsGroup>
