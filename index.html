@@ -15,7 +15,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #fcfbfa;
@@ -28,10 +28,12 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    /* 모바일 가로 스크롤 방지 및 완벽한 중앙 정렬 유지 */
+    /* 모바일 가로 스크롤(쏠림 현상) 방지를 위한 강력한 중앙 정렬 */
     html, body {
       overflow-x: hidden;
       width: 100%;
+      margin: 0;
+      padding: 0;
     }
     body {
       background-color: #eae7e2;
@@ -39,30 +41,28 @@
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 15px;
       line-height: 1.7;
-      display: flex;
-      justify-content: center;
+      -webkit-font-smoothing: antialiased;
     }
 
     .wrapper {
       width: 100%;
       max-width: 440px;
-      margin: 0 auto; /* 모바일/PC 완벽 중앙 정렬 */
+      margin: 0 auto; /* PC/모바일 완벽 중앙 정렬 */
       background: var(--bg-color);
       min-height: 100vh;
       box-shadow: 0 0 25px rgba(0,0,0,0.06);
       position: relative;
       padding-bottom: 70px;
-      padding-top: 45px; /* 상단 언어바(fixed)가 컨텐츠를 가리지 않도록 공간 확보 */
-      overflow-x: hidden; /* 내부 요소가 바깥으로 튀어나가는 현상 방지 */
+      padding-top: 45px; 
+      overflow-x: hidden;
     }
 
-    /* Language Switcher - 항상 최상단에 고정되도록 fixed 적용 */
+    /* Language Switcher - 쏠림 없는 중앙 고정 방식 적용 */
     .lang-bar {
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
       max-width: 440px;
       z-index: 1000;
@@ -103,19 +103,24 @@
       font-family: 'Cormorant Garamond', serif;
       letter-spacing: 1px;
     }
+    
+    /* 중제목 사이즈 키움 (14px -> 17px) 및 폰트 굵기 강조 */
     .section-title {
-      font-size: 14px;
+      font-size: 17px;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: var(--accent-color);
       margin-bottom: 16px;
     }
 
-    /* Hero Section with Bottom Gradient Fade */
+    /* Hero Section - 모바일 흔들림 원인인 음수 마진(-) 제거 후 재설계 */
     .hero {
-      padding: 20px 20px 40px;
+      padding: 20px 0 40px 0; /* 좌우 여백을 0으로 만들어 사진을 꽉 채움 */
     }
-    /* 상단 '초대합니다 / You're Invited' 공통 세리프체(정자체, 동일 사이즈) 설정 */
+    .hero-text-content {
+      padding: 0 20px; /* 텍스트 부분만 좌우 여백 다시 부여 */
+    }
     .hero-top-msg {
       font-family: 'Cormorant Garamond', serif;
       font-size: 18px;
@@ -124,10 +129,10 @@
       letter-spacing: 2px;
       color: var(--accent-color);
       margin-bottom: 14px;
+      padding: 0 20px;
     }
     .hero-img-wrap {
-      width: calc(100% + 40px);
-      margin-left: -20px;
+      width: 100%;
       height: 540px;
       overflow: hidden;
       margin-bottom: 12px;
@@ -388,6 +393,7 @@
   <section class="hero">
     <div class="hero-top-msg ko">초대합니다</div>
     <div class="hero-top-msg en">You're Invited</div>
+    
     <div class="hero-img-wrap">
       <img 
         id="hero-photo" 
@@ -396,9 +402,12 @@
         onerror="resolvePhotoError(this)"
       >
     </div>
-    <div class="section-title serif">Wedding Invitation</div>
-    <div class="hero-names serif">Jeff Anderson &amp; Leah Hyewon Jang</div>
-    <div class="hero-date">19/Feb/2027 FRI 12:30 PM</div>
+    
+    <div class="hero-text-content">
+      <div class="section-title serif">Wedding Invitation</div>
+      <div class="hero-names serif">Jeff Anderson &amp; Leah Hyewon Jang</div>
+      <div class="hero-date">19/Feb/2027 FRI 12:30 PM</div>
+    </div>
   </section>
 
   <!-- Greeting Section -->
@@ -707,8 +716,9 @@
 </body>
 </html>
 ```<br>
-<ElicitationsGroup message="다른 부분도 변경해 드릴까요?">
-  <Elicitation label="배경 음악 추가하기" query="배경 음악을 자동으로 재생되게 코드를 추가해 줘."/>
-  <Elicitation label="웨딩 갤러리 섹션 넣기" query="초대의 글 아래에 여러 장의 사진을 볼 수 있는 갤러리를 추가해 줘."/>
-  <Elicitation label="방명록 댓글창 달기" query="맨 아래 하객들이 축하 인사를 남길 수 있는 방명록을 달아 줘."/>
+<FollowUp></FollowUp>
+<ElicitationsGroup>
+  <Elicitation label="배경 음악 추가하기" query="이 웹 청첩장에 어울리는 잔잔한 배경 음악을 자동으로 재생되게 추가해 줄 수 있어?"/>
+  <Elicitation label="갤러리(사진첩) 넣기" query="초대의 글 아래에 웨딩 사진 여러 장을 볼 수 있는 갤러리 섹션을 추가해 줘."/>
+  <Elicitation label="본문 텍스트 수정하기" query="초대의 글이나 식순(Timeline)에 있는 문구를 조금 더 수정하고 싶어."/>
 </ElicitationsGroup>
