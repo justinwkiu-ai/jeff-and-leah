@@ -28,7 +28,7 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    /* 모바일 가로 스크롤 방지 및 완벽한 중앙 정렬을 위한 수정 */
+    /* 모바일 가로 스크롤 방지 및 완벽한 중앙 정렬 유지 */
     html, body {
       overflow-x: hidden;
       width: 100%;
@@ -39,6 +39,8 @@
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 15px;
       line-height: 1.7;
+      display: flex;
+      justify-content: center;
     }
 
     .wrapper {
@@ -50,14 +52,20 @@
       box-shadow: 0 0 25px rgba(0,0,0,0.06);
       position: relative;
       padding-bottom: 70px;
+      padding-top: 45px; /* 상단 언어바(fixed)가 컨텐츠를 가리지 않도록 공간 확보 */
       overflow-x: hidden; /* 내부 요소가 바깥으로 튀어나가는 현상 방지 */
     }
 
-    /* Language Switcher */
+    /* Language Switcher - 항상 최상단에 고정되도록 fixed 적용 */
     .lang-bar {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 440px;
+      z-index: 1000;
       background: rgba(252, 251, 250, 0.92);
       backdrop-filter: blur(6px);
       display: flex;
@@ -370,7 +378,7 @@
 <body class="lang-en">
 
 <div class="wrapper">
-  <!-- Language Toggle Sticky Bar (English Default) -->
+  <!-- Language Toggle Fixed Bar (English Default) -->
   <div class="lang-bar">
     <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
     <button class="lang-btn" id="btn-ko" onclick="setLang('ko')">한국어</button>
@@ -547,18 +555,18 @@
   <!-- Location Section -->
   <section>
     <div class="section-title serif">Location</div>
-    <h3 style="font-size:18px; margin-bottom:6px;">Cove Civic Centre</h3>
-    <p style="font-size:13px; color:var(--text-sub);">1 Ragamuffin Dr, Hallett Cove SA 5158 Australia</p>
+    <h3 style="font-size:18px; margin-bottom:6px;">Fullarton Park Community Centre</h3>
+    <p style="font-size:13px; color:var(--text-sub);">411 Fullarton Rd, Fullarton SA 5063 Australia</p>
 
     <div class="map-box">
       <!-- Google Maps Embed -->
       <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.398910406649!2d138.50652877665796!3d-35.07174667279011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0ce4b706f97ef%3A0xe54e2f896bfa8a76!2sCove%20Civic%20Centre!5e0!3m2!1sen!2sau!4v1710000000000!5m2!1sen!2sau" 
+        src="https://maps.google.com/maps?q=Fullarton%20Park%20Community%20Centre,%20411%20Fullarton%20Rd,%20Fullarton%20SA%205063,%20Australia&t=&z=14&ie=UTF8&iwloc=&output=embed" 
         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" rel="noopener noreferrer" class="btn-action ko">구글 맵으로 길찾기</a>
-    <a href="https://maps.google.com/?q=Cove+Civic+Centre" target="_blank" rel="noopener noreferrer" class="btn-action en">Open in Google Maps</a>
+    <a href="https://maps.google.com/?q=Fullarton+Park+Community+Centre,+411+Fullarton+Rd" target="_blank" rel="noopener noreferrer" class="btn-action ko">구글 맵으로 길찾기</a>
+    <a href="https://maps.google.com/?q=Fullarton+Park+Community+Centre,+411+Fullarton+Rd" target="_blank" rel="noopener noreferrer" class="btn-action en">Open in Google Maps</a>
   </section>
 
   <!-- RSVP Section -->
@@ -695,24 +703,12 @@
         .catch(() => {});
     }
   }
-
-  // Account Copy Function
-  function copyText(val) {
-    navigator.clipboard.writeText(val).then(() => {
-      const toast = document.getElementById('toast');
-      const isEn = document.body.classList.contains('lang-en');
-      toast.innerText = isEn ? 'Copied to clipboard' : '계좌번호가 복사되었습니다.';
-      toast.className = 'show';
-      setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 2000);
-    });
-  }
 </script>
 </body>
 </html>
 ```<br>
-<FollowUp></FollowUp>
-
-<ElicitationsGroup>
-  <Elicitation label="테마 색상 변경" query="페이지 전체적인 배경색이나 포인트 컬러를 바꿀 수 있을까?"/>
-  <Elicitation label="안내 문구 수정" query="초대의 글이나 일정에 있는 문구를 조금 더 수정하고 싶어." 기입/>
+<ElicitationsGroup message="다른 부분도 변경해 드릴까요?">
+  <Elicitation label="배경 음악 추가하기" query="배경 음악을 자동으로 재생되게 코드를 추가해 줘."/>
+  <Elicitation label="웨딩 갤러리 섹션 넣기" query="초대의 글 아래에 여러 장의 사진을 볼 수 있는 갤러리를 추가해 줘."/>
+  <Elicitation label="방명록 댓글창 달기" query="맨 아래 하객들이 축하 인사를 남길 수 있는 방명록을 달아 줘."/>
 </ElicitationsGroup>
