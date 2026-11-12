@@ -47,7 +47,7 @@
     .wrapper {
       width: 100%;
       max-width: 440px;
-      margin: 0 auto; /* PC/모바일 완벽 중앙 정렬 */
+      margin: 0 auto;
       background: var(--bg-color);
       min-height: 100vh;
       box-shadow: 0 0 25px rgba(0,0,0,0.06);
@@ -57,7 +57,7 @@
       overflow-x: hidden;
     }
 
-    /* Language Switcher - 쏠림 없는 중앙 고정 방식 적용 */
+    /* Language Switcher */
     .lang-bar {
       position: fixed;
       top: 0;
@@ -89,11 +89,9 @@
       color: #fff;
     }
 
-    /* Content Visibility by Language */
     body.lang-ko .en { display: none !important; }
     body.lang-en .ko { display: none !important; }
 
-    /* Sections */
     section {
       padding: 40px 24px;
       text-align: center;
@@ -104,7 +102,6 @@
       letter-spacing: 1px;
     }
     
-    /* 중제목 사이즈 키움 (14px -> 17px) 및 폰트 굵기 강조 */
     .section-title {
       font-size: 17px;
       font-weight: 600;
@@ -114,12 +111,11 @@
       margin-bottom: 16px;
     }
 
-    /* Hero Section - 모바일 흔들림 원인인 음수 마진(-) 제거 후 재설계 */
     .hero {
-      padding: 20px 0 40px 0; /* 좌우 여백을 0으로 만들어 사진을 꽉 채움 */
+      padding: 20px 0 40px 0; 
     }
     .hero-text-content {
-      padding: 0 20px; /* 텍스트 부분만 좌우 여백 다시 부여 */
+      padding: 0 20px; 
     }
     .hero-top-msg {
       font-family: 'Cormorant Garamond', serif;
@@ -177,14 +173,12 @@
       letter-spacing: 1px;
     }
 
-    /* Greeting Section */
     .greeting-text {
       color: var(--text-sub);
       font-size: 14.5px;
       line-height: 2;
     }
 
-    /* Profile Section */
     .profile-card {
       background: var(--card-bg);
       border: 1px solid var(--line-color);
@@ -211,7 +205,6 @@
       margin-left: 3px;
     }
 
-    /* Calendar & D-Day Section */
     .calendar-container {
       background: var(--card-bg);
       border: 1px solid var(--line-color);
@@ -255,7 +248,6 @@
       color: #ccc;
     }
 
-    /* D-Day Timer UI */
     .dday-box {
       border-top: 1px solid var(--line-color);
       padding-top: 16px;
@@ -290,7 +282,6 @@
       font-weight: 500;
     }
 
-    /* Timeline Section */
     .timeline {
       text-align: left;
       margin: 20px auto 0;
@@ -313,7 +304,6 @@
       color: var(--text-main);
     }
 
-    /* Map & Location */
     .map-box {
       width: 100%;
       height: 220px;
@@ -337,14 +327,20 @@
       cursor: pointer;
     }
     
+    /* RSVP 안내 문구: 모바일에서 무조건 한 줄로 보이도록 수정 */
     .rsvp-notice {
-      font-size: 13px;
+      font-size: 12px;
+      letter-spacing: -0.5px;
+      white-space: nowrap; /* 줄바꿈 원천 차단 */
       color: #d9534f;
       margin-top: 15px;
       font-weight: 500;
     }
+    .rsvp-notice.en {
+      font-size: 10.5px; /* 영문은 글자 수가 많아 폰트 사이즈를 더 줄임 */
+      letter-spacing: -0.2px;
+    }
 
-    /* Share Section */
     .share-section {
       background: #f7f5f0;
       padding: 30px 24px;
@@ -368,7 +364,6 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* Toast Alert */
     #toast {
       visibility: hidden;
       min-width: 200px;
@@ -469,7 +464,6 @@
         <div class="cal-day-name">Fr</div>
         <div class="cal-day-name">Sa</div>
 
-        <!-- Feb 2027 Calendar Matrix -->
         <div class="cal-day muted">31</div>
         <div class="cal-day">1</div>
         <div class="cal-day">2</div>
@@ -596,6 +590,8 @@
     </p>
     <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action ko" style="background:#555;">참석 여부 전달하기 (RSVP)</a>
     <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
+    
+    <!-- 모바일 한 줄 고정 안내 문구 -->
     <p class="rsvp-notice ko">* 청첩장을 받으신 후 2주 뒤에 설문이 마감됩니다.</p>
     <p class="rsvp-notice en">* The RSVP form will close 2 weeks after receiving this invitation.</p>
   </section>
@@ -615,10 +611,8 @@
 <div id="toast">Copied to clipboard</div>
 
 <script>
-  // Automatically set og:url to current page
   document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
 
-  // Language Switch Function
   function setLang(lang) {
     if (lang === 'en') {
       document.body.className = 'lang-en';
@@ -631,7 +625,6 @@
     }
   }
 
-  // D-Day Countdown Timer Logic (17:00:00 으로 기준시간 변경)
   const weddingDate = new Date('2027-02-19T17:00:00');
 
   function updateCountdown() {
@@ -676,7 +669,6 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // Native Share / Clipboard Fallback Function
   function shareWeddingCard() {
     const shareData = {
       title: "Jeff & Leah's Wedding Invitation",
@@ -697,9 +689,9 @@
     }
   }
 
-  // Photo Fallback Resolver
   const fallbackCandidates = [
     'jeff_leah_image.jpg',
+    'jeff_leah_image.jpeg',
     'jeff_leah_image.png'
   ];
   let fallbackIndex = 0;
@@ -709,23 +701,14 @@
       imgElement.src = fallbackCandidates[fallbackIndex++];
     } else {
       imgElement.onerror = null;
-      fetch('https://api.github.com/repos/justinwkiu-ai/jeff-and-leah/contents/')
-        .then(res => res.json())
-        .then(files => {
-          if (Array.isArray(files)) {
-            const imgFile = files.find(f => /\.(jpe?g|png|webp|gif)$/i.test(f.name));
-            if (imgFile) imgElement.src = imgFile.name;
-          }
-        })
-        .catch(() => {});
     }
   }
 </script>
 </body>
 </html>
 ```<br>
-<ElicitationsGroup message="다른 부분도 추가로 수정해 드릴까요?">
-  <Elicitation label="테마 색상 변경" query="페이지 배경이나 버튼 색상(포인트 컬러)을 변경할 수 있을까?"/>
-  <Elicitation label="방명록 추가" query="초대장 아래에 하객들이 축하 메시지를 남길 수 있는 댓글(방명록) 기능을 넣어 줘."/>
-  <Elicitation label="캘린더 저장 기능" query="예식일정을 구글 캘린더에 바로 저장할 수 있는 버튼을 추가해 줘."/>
+<ElicitationsGroup message="추가로 다듬고 싶은 부분이 있으신가요?">
+  <Elicitation label="배경색 변경하기" query="전체적인 배경색을 화이트톤으로 더 밝게 바꿀 수 있을까?"/>
+  <Elicitation label="방명록 추가하기" query="하객들이 메시지를 남길 수 있는 방명록(댓글창)을 추가해 줘."/>
+  <Elicitation label="사진첩 추가하기" query="초대의 글 아래에 여러 장의 사진을 볼 수 있는 갤러리를 추가해 줘."/>
 </ElicitationsGroup>
