@@ -327,17 +327,16 @@
       cursor: pointer;
     }
     
-    /* RSVP 안내 문구: 모바일에서 무조건 한 줄로 보이도록 수정 */
     .rsvp-notice {
       font-size: 12px;
       letter-spacing: -0.5px;
-      white-space: nowrap; /* 줄바꿈 원천 차단 */
+      white-space: nowrap; 
       color: #d9534f;
       margin-top: 15px;
       font-weight: 500;
     }
     .rsvp-notice.en {
-      font-size: 10.5px; /* 영문은 글자 수가 많아 폰트 사이즈를 더 줄임 */
+      font-size: 10.5px; 
       letter-spacing: -0.2px;
     }
 
@@ -393,8 +392,8 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-top-msg ko">초대합니다</div>
-    <div class="hero-top-msg en">You're Invited</div>
+    <div class="hero-top-msg ko">제프와 혜원의 결혼식</div>
+    <div class="hero-top-msg en">Jeff & Leah's Wedding</div>
     
     <div class="hero-img-wrap">
       <img 
@@ -591,7 +590,6 @@
     <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action ko" style="background:#555;">참석 여부 전달하기 (RSVP)</a>
     <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
     
-    <!-- 모바일 한 줄 고정 안내 문구 -->
     <p class="rsvp-notice ko">* 청첩장을 받으신 후 2주 뒤에 설문이 마감됩니다.</p>
     <p class="rsvp-notice en">* The RSVP form will close 2 weeks after receiving this invitation.</p>
   </section>
@@ -707,8 +705,8 @@
 </body>
 </html>
 ```<br>
-<ElicitationsGroup message="추가로 다듬고 싶은 부분이 있으신가요?">
-  <Elicitation label="배경색 변경하기" query="전체적인 배경색을 화이트톤으로 더 밝게 바꿀 수 있을까?"/>
-  <Elicitation label="방명록 추가하기" query="하객들이 메시지를 남길 수 있는 방명록(댓글창)을 추가해 줘."/>
-  <Elicitation label="사진첩 추가하기" query="초대의 글 아래에 여러 장의 사진을 볼 수 있는 갤러리를 추가해 줘."/>
+<ElicitationsGroup message="다른 수정이 필요하신가요?">
+  <Elicitation label="포인트 컬러 변경" query="페이지 전체적인 텍스트나 버튼의 포인트 색상을 바꿔볼 수 있을까?"/>
+  <Elicitation label="배경 음악 추가" query="청첩장 접속 시 은은하게 재생되는 배경 음악을 넣을 수 있을까?"/>
+  <Elicitation label="방명록 달기" query="초대장 아래에 지인들이 글을 남길 수 있는 방명록을 추가해 줘."/>
 </ElicitationsGroup>
