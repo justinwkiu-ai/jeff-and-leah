@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Jeff & Leah's Wedding Invitation">
   <meta property="og:description" content="You're invited to the wedding of Jeff Anderson & Leah Hyewon Jang on Feb 19, 2027.">
-  <meta property="og:image" content="https://justinwkiu-ai.github.io/jeff-and-leah/KakaoTalk_Photo_2026-10-16-10-04-08.jpeg">
+  <meta property="og:image" content="https://justinwkiu-ai.github.io/jeff-and-leah/jeff_leah_image.jpg">
   <meta property="og:url" content="">
 
   <!-- Google Fonts -->
@@ -336,6 +336,13 @@
       border: none;
       cursor: pointer;
     }
+    
+    .rsvp-notice {
+      font-size: 13px;
+      color: #d9534f;
+      margin-top: 15px;
+      font-weight: 500;
+    }
 
     /* Share Section */
     .share-section {
@@ -397,7 +404,7 @@
     <div class="hero-img-wrap">
       <img 
         id="hero-photo" 
-        src="KakaoTalk_Photo_2026-10-16-10-04-08.jpeg" 
+        src="jeff_leah_image.jpg" 
         alt="Jeff & Leah Wedding Snapshot"
         onerror="resolvePhotoError(this)"
       >
@@ -406,7 +413,7 @@
     <div class="hero-text-content">
       <div class="section-title serif">Wedding Invitation</div>
       <div class="hero-names serif">Jeff Anderson &amp; Leah Hyewon Jang</div>
-      <div class="hero-date">19/Feb/2027 FRI 12:30 PM</div>
+      <div class="hero-date">19/Feb/2027 FRI 05:00 PM</div>
     </div>
   </section>
 
@@ -449,7 +456,7 @@
   <!-- Calendar & D-Day Section -->
   <section>
     <div class="section-title serif">Wedding Date</div>
-    <p style="color:var(--text-sub); font-size:13.5px; margin-bottom: 4px;">2027. 02. 19 FRI PM 12:30</p>
+    <p style="color:var(--text-sub); font-size:13.5px; margin-bottom: 4px;">2027. 02. 19 FRI PM 05:00</p>
     
     <div class="calendar-container">
       <div class="cal-header">February 2027</div>
@@ -539,24 +546,24 @@
     <p style="color:var(--text-sub); font-size:13px; margin-bottom: 15px;">19/Feb/2027 (FRI)</p>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-time">12:30 PM</div>
-        <div class="timeline-desc ko">하객 맞이 및 등록</div>
-        <div class="timeline-desc en">Guest Arrival & Welcome</div>
+        <div class="timeline-time">05:00 PM</div>
+        <div class="timeline-desc ko">하객 맞이</div>
+        <div class="timeline-desc en">Welcome guests</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">01:00 PM</div>
+        <div class="timeline-time">06:00 PM</div>
         <div class="timeline-desc ko">결혼 예배 / 본식</div>
         <div class="timeline-desc en">Wedding Ceremony</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">02:30 PM</div>
-        <div class="timeline-desc ko">리셉션 & 점심 식사</div>
-        <div class="timeline-desc en">Reception & Lunch</div>
+        <div class="timeline-time">06:30 PM</div>
+        <div class="timeline-desc ko">리셉션 & 웨딩 파티</div>
+        <div class="timeline-desc en">Wedding Reception</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">06:00 PM ~</div>
-        <div class="timeline-desc ko">축하 파티 (~11:00 PM)</div>
-        <div class="timeline-desc en">Evening Celebration (~11:00 PM)</div>
+        <div class="timeline-time">09:00 PM</div>
+        <div class="timeline-desc ko">행사 마무리 (~10:00 PM)</div>
+        <div class="timeline-desc en">Pack-up (~10:00 PM)</div>
       </div>
     </div>
   </section>
@@ -589,6 +596,8 @@
     </p>
     <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action ko" style="background:#555;">참석 여부 전달하기 (RSVP)</a>
     <a href="https://forms.gle/BFqKHGmKbh3CTMmcA" target="_blank" rel="noopener noreferrer" class="btn-action en" style="background:#555;">Submit RSVP Form</a>
+    <p class="rsvp-notice ko">* 청첩장을 받으신 후 2주 뒤에 설문이 마감됩니다.</p>
+    <p class="rsvp-notice en">* The RSVP form will close 2 weeks after receiving this invitation.</p>
   </section>
 
   <!-- Share Section -->
@@ -622,8 +631,8 @@
     }
   }
 
-  // D-Day Countdown Timer Logic
-  const weddingDate = new Date('2027-02-19T12:30:00');
+  // D-Day Countdown Timer Logic (17:00:00 으로 기준시간 변경)
+  const weddingDate = new Date('2027-02-19T17:00:00');
 
   function updateCountdown() {
     const now = new Date();
@@ -690,9 +699,8 @@
 
   // Photo Fallback Resolver
   const fallbackCandidates = [
-    'KakaoTalk_Photo_2026-10-16-10-04-08.jpeg',
-    'KakaoTalk_Photo_2026-10-16-10-04-08.JPG',
-    'KakaoTalk_Photo_2026-10-16-10-04-08.png'
+    'jeff_leah_image.jpg',
+    'jeff_leah_image.png'
   ];
   let fallbackIndex = 0;
 
@@ -716,9 +724,8 @@
 </body>
 </html>
 ```<br>
-<FollowUp></FollowUp>
-<ElicitationsGroup>
-  <Elicitation label="배경 음악 추가하기" query="이 웹 청첩장에 어울리는 잔잔한 배경 음악을 자동으로 재생되게 추가해 줄 수 있어?"/>
-  <Elicitation label="갤러리(사진첩) 넣기" query="초대의 글 아래에 웨딩 사진 여러 장을 볼 수 있는 갤러리 섹션을 추가해 줘."/>
-  <Elicitation label="본문 텍스트 수정하기" query="초대의 글이나 식순(Timeline)에 있는 문구를 조금 더 수정하고 싶어."/>
+<ElicitationsGroup message="다른 부분도 추가로 수정해 드릴까요?">
+  <Elicitation label="테마 색상 변경" query="페이지 배경이나 버튼 색상(포인트 컬러)을 변경할 수 있을까?"/>
+  <Elicitation label="방명록 추가" query="초대장 아래에 하객들이 축하 메시지를 남길 수 있는 댓글(방명록) 기능을 넣어 줘."/>
+  <Elicitation label="캘린더 저장 기능" query="예식일정을 구글 캘린더에 바로 저장할 수 있는 버튼을 추가해 줘."/>
 </ElicitationsGroup>
