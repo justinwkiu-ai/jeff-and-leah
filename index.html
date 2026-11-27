@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeff & Leah's Wedding Invitation</title>
+  <title>Jeff &amp; Hyewon's Wedding Invitation</title>
 
   <!-- Open Graph / Social Sharing Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Jeff & Leah's Wedding Invitation">
-  <meta property="og:description" content="2027년 4월 3일 토요일 오후 5시, 제프 앤더슨 & 장혜원의 결혼식에 초대합니다.">
+  <meta property="og:title" content="Jeff &amp; Hyewon's Wedding Invitation">
+  <meta property="og:description" content="2027년 4월 3일 토요일 오후 5시, 제프 앤더슨 &amp; 장혜원의 결혼식에 초대합니다.">
   <meta property="og:image" content="https://justinwkiu-ai.github.io/jeff-and-leah/KakaoTalk_Photo_2026-10-16-10-04-08.jpeg">
   <meta property="og:url" content="">
 
@@ -78,8 +78,9 @@
       margin-bottom: 16px;
     }
 
+    /* Hero Section with Top & Bottom Soft Gradients */
     .hero {
-      padding: 28px 0 40px 0; 
+      padding: 26px 0 40px 0; 
     }
     .hero-text-content {
       padding: 0 20px; 
@@ -91,13 +92,16 @@
       font-weight: 600;
       letter-spacing: 2px;
       color: var(--accent-color);
-      margin-bottom: 16px;
-      padding: 0 20px;
+      margin-bottom: 6px;
+      padding: 0 20px 10px 20px;
+      position: relative;
+      z-index: 2;
     }
     .hero-img-wrap {
       width: 100%;
       height: 540px;
       overflow: hidden;
+      margin-top: -12px;
       margin-bottom: 12px;
       background: var(--bg-color);
       position: relative;
@@ -109,6 +113,24 @@
       object-position: center 20%;
       display: block;
     }
+    /* 상단 배경과 이미지가 겹치는 구간에 얇고 자연스러운 그라데이션 */
+    .hero-img-wrap::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 14%;
+      background: linear-gradient(
+        to bottom,
+        #fcfbfa 0%,
+        rgba(252, 251, 250, 0.75) 45%,
+        rgba(252, 251, 250, 0) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* 하단 그라데이션 */
     .hero-img-wrap::after {
       content: "";
       position: absolute;
@@ -124,6 +146,7 @@
         #fcfbfa 100%
       );
       pointer-events: none;
+      z-index: 1;
     }
     .hero-names {
       font-size: clamp(16px, 4.5vw, 20px);
@@ -269,7 +292,7 @@
       color: var(--text-main);
     }
 
-    /* Location & Naver Map */
+    /* Location & Map */
     .map-box {
       width: 100%;
       height: 230px;
@@ -380,20 +403,20 @@
 <div class="wrapper">
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-top-msg">Jeff &amp; Leah's Wedding</div>
+    <div class="hero-top-msg">Jeff &amp; Hyewon's Wedding</div>
     
     <div class="hero-img-wrap">
       <img 
         id="hero-photo" 
         src="KakaoTalk_Photo_2026-10-16-10-04-08.jpeg" 
-        alt="Jeff & Leah Wedding Snapshot"
+        alt="Jeff &amp; Hyewon Wedding Snapshot"
         onerror="resolvePhotoError(this)"
       >
     </div>
     
     <div class="hero-text-content">
       <div class="section-title serif">Wedding Invitation</div>
-      <div class="hero-names serif">Jeff Anderson &amp; Leah Hyewon Jang</div>
+      <div class="hero-names serif">Jeff Anderson &amp; Hyewon Jang</div>
       <div class="hero-date">2027년 4월 3일 토요일 오후 5시</div>
     </div>
   </section>
@@ -419,7 +442,7 @@
     </div>
     <div class="profile-card">
       <div class="profile-role">신부</div>
-      <div class="profile-name">장혜원 <span class="en-sub">(Leah Hyewon Jang)</span></div>
+      <div class="profile-name">장혜원 <span class="en-sub">(Hyewon Jang)</span></div>
     </div>
   </section>
 
@@ -501,7 +524,7 @@
             <div class="timer-lbl">초</div>
           </div>
         </div>
-        <div class="dday-text" id="dday-sentence">Jeff ♥ Leah의 결혼식이 0일 남았습니다.</div>
+        <div class="dday-text" id="dday-sentence">Jeff ♥ 장혜원의 결혼식이 0일 남았습니다.</div>
       </div>
     </div>
   </section>
@@ -516,31 +539,27 @@
         <div class="timeline-desc">하객 맞이</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">오후 6:00</div>
+        <div class="timeline-time">오후 5:30</div>
         <div class="timeline-desc">결혼 예배 / 본식</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">오후 6:30</div>
-        <div class="timeline-desc">리셉션 &amp; 웨딩 파티</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">오후 9:00</div>
-        <div class="timeline-desc">행사 마무리 (~오후 10:00)</div>
+        <div class="timeline-time">오후 6:00</div>
+        <div class="timeline-desc">식사</div>
       </div>
     </div>
   </section>
 
-  <!-- Location Section (네이버 지도 연동 및 주차/도보 안내) -->
+  <!-- Location Section (구글 지도 임베드 + 네이버 지도 길찾기 버튼) -->
   <section>
     <div class="section-title serif">Location</div>
     <h3 style="font-size:18px; margin-bottom:6px;">아리랑힐 호텔 아리움 홀 3층</h3>
     <p style="font-size:13.5px; color:var(--text-sub);">서울시 성북구 아리랑로 8 (아리랑힐 호텔 동대문)</p>
 
     <div class="map-box">
-      <!-- 네이버 지도 모바일 웹 연동 임베드 -->
+      <!-- Google Maps Embed -->
       <iframe 
-        src="https://m.map.naver.com/search2/search.naver?query=%EC%95%84%EB%A6%AC%EB%9E%91%ED%9E%90+%ED%98%B8%ED%85%94+%EB%8F%99%EB%8C%80%EB%AC%B8" 
-        width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+        src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%84%B1%EB%B6%81%EA%B5%AC%20%EC%95%84%EB%A6%AC%EB%9E%91%EB%A1%9C%208%20%EC%95%84%EB%A6%AC%EB%9E%91%ED%9E%90%20%ED%98%B8%ED%85%94%20%EB%8F%99%EB%8C%80%EB%AC%B8&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <a href="https://map.naver.com/p/search/%EC%95%84%EB%A6%AC%EB%9E%91%ED%9E%90%20%ED%98%B8%ED%85%94%20%EB%8F%99%EB%8C%80%EB%AC%B8" target="_blank" rel="noopener noreferrer" class="btn-action btn-naver">네이버 지도로 길찾기</a>
@@ -550,7 +569,7 @@
       <div class="transport-item">
         <div class="transport-title">🚗 주차 안내</div>
         <div class="transport-desc">
-          2시간 무료 주차 가능 (호텔 옆 주차타워 이용 가능)<br>
+          2시간 무료 주차 (호텔 옆 주차타워 이용 가능)<br>
           <span style="color:var(--text-sub); font-size:12.5px;">* 만차 시 인근 유료주차장 이용</span>
         </div>
       </div>
@@ -618,7 +637,7 @@
       document.getElementById('d-hours').innerText = '00';
       document.getElementById('d-mins').innerText = '00';
       document.getElementById('d-secs').innerText = '00';
-      sentenceEl.innerText = `Jeff ♥ Leah의 결혼식으로부터 ${passedDays}일이 지났습니다.`;
+      sentenceEl.innerText = `Jeff ♥ 장혜원의 결혼식으로부터 ${passedDays}일이 지났습니다.`;
       return;
     }
 
@@ -631,7 +650,7 @@
     document.getElementById('d-hours').innerText = String(hours).padStart(2, '0');
     document.getElementById('d-mins').innerText = String(mins).padStart(2, '0');
     document.getElementById('d-secs').innerText = String(secs).padStart(2, '0');
-    sentenceEl.innerText = `Jeff ♥ Leah의 결혼식이 ${days}일 남았습니다.`;
+    sentenceEl.innerText = `Jeff ♥ 장혜원의 결혼식이 ${days}일 남았습니다.`;
   }
 
   setInterval(updateCountdown, 1000);
@@ -639,7 +658,7 @@
 
   function shareWeddingCard() {
     const shareData = {
-      title: "Jeff & Leah's Wedding Invitation",
+      title: "Jeff & Hyewon's Wedding Invitation",
       text: "2027년 4월 3일 토요일 오후 5시, 제프 앤더슨 & 장혜원의 결혼식에 초대합니다.",
       url: window.location.href
     };
